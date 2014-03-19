@@ -51,39 +51,17 @@ session_start();?>
 </div>	
 
 <div id='right'>
-<h3>My Blog Posts:</h3>
-<?php
-$user=$_SESSION['username'];
-	$query = "SELECT post_id,uname,title,body FROM blog WHERE uname='$user'";
-	
-	$result=mysqli_query($connection,$query);
-	if($result){
-		if(mysqli_num_rows($result)>=1){
-				while($row = mysqli_fetch_array($result)){
-				
-				extract($row);
-				$ida="$post_id";
-				echo $ida;
-			    
-				?>
-				<table border="1" style="width:50%;">
-				<tr>
-				<th rowspan="2" colspan ="2" style="width:20%;">blog</th>
-				<td><?php echo "<h4>Title: $title</h4>";?></tr>
-				<tr>
-				<td><?php echo "<h4>body: $body</h4>";?></td>
-				</tr>
-				<td><a href='profileDisplay.php' class='active'>edit</a></td>
-				<td><a href='deleteblog.php' class='active'>delete</a></td>
-				
-				</table>
-					
-			<?php
-				
-				}}
-				else{echo"Not found";}
-	}else{echo"Not found";}
-	?>
+<h3>Edit blog</h3>
+<form method="POST" action="bedit.php">
+<h2><u>Login:</u></h2>
+Title:   <input type="text" name="title" size="30"/><br />
+<TEXTAREA NAME="body"  ROWS="6" COLS="75">
+
+</TEXTAREA>
+<br><br>
+<input type="submit" value="Post" />
+</form>
+
 
 
 </div>

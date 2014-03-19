@@ -26,19 +26,21 @@ Password: <input type="password" name="password" size="10" maxlength="10" value=
 </div>
 <div id='content'>
 <h2><u>Not yet Registered, Sign Up</u></h2>
-<form method="POST" action="signup.php">
+<form method="POST" action="signup.php" enctype="multipart/form-data">
 <h2>Registration Form:</h2>
 First Name: <input type="text" name="fname" size="10" maxlength="10" value="" /><br />
 Last Name: <input type="text" name="lname" size="10" maxlength="10" value="" /><br />
 Username: <input type="username" name="username" size="10" maxlength="10" value="" /><br />
+Course <input type="text" name="course" size="20" maxlength="20" value="" /><br />
 Password: <input type="password" name="password" size="8" maxlength="8" value="" /><br />
 Date of Birth: <input type="text" name="dob" size="6" maxlength="6" value="" /><br />
 E-Mail Address: <input type="text" name="email" size="30" maxlength="30" value="" /><br />
+From (Country/City): <input type="text" name="from" size="30" maxlength="30" value="" /><br />
+<input name="uploadedfile" type="file" /><br />
 <input type="submit" value="Register" />
-</form>
 </div>
 <div id= "footer">
-<small>Registered to: Usman Muhammad 2831996 / Ammar Tariq 2824199</small>
+<small><center>Registered to: Usman Muhammad 2831996 / Ammar Tariq 2824199</center></small>
 </div>
 
 

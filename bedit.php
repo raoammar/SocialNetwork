@@ -1,9 +1,3 @@
-<?php
-session_start();
-session_destroy();
-
-?>
-<!DOCTYPE html>
 <html>
 <head>
    <title>Gcd Social Networking</title>
@@ -17,10 +11,22 @@ session_destroy();
 </div>
 <div id='nav'> 
 <ul> <center>
-Successfully Logged Out </br>
-Thankyou for using GCD Social Networking</br>
-<input type="button" onclick="parent.location='index.php'" value="Login Again">     
- </ul> </center>
+ <?php
+
+ $title=$_POST['fname'];
+ $body=$_POST['lname'];
+
+$sql2="UPDATE blog SET title='&title',body='$body' WHERE id='$id'";
+$result2=mysqli_query($connection,$sql2);
+if($result2){
+echo "All information Successfully Updated";}
+else{
+echo"Error, Please go back to fill up the form again";
+}	
+	mysqli_close($connection);
+?>
+<input type="button" onclick="parent.location='myblog.php'" value="Home">     
+ </ul> </center
 </div> 
 <div id='content'>
 <div id='left'>

@@ -10,12 +10,12 @@ session_start();?>
 <body>
 <div id="wrapper">
 <div id= 'header'>
-<img src="GCD.jpg" alt="GCD" width="100" height="100" img align="left">
+<a href="profileDisplay.php"><img src="GCD.jpg" alt="GCD" width="100" height="100" img align="left"></a>
 <h1><center><u>Gcd Social Networking</u></center></h1>
 <div class="floatright"><h3><a href='logout.php'>Logout</a></h3></div>
 </div>
 <div id='nav'> 
-<ul> 
+<ul> <center>
 <a href='profileDisplay.php' class='active'>Home</a>
 <a href='edit.php'>Edit Profile</a>
 <a href='myblogs.php'>Blogs</a>
@@ -23,13 +23,12 @@ session_start();?>
 <a href='#'>Friends</a>
 <a href='search.php'>Search People</a>
 <a href='#'>Messages</a>
- </ul> 
+ </ul> </center>
 </div> 
 <div id='content'>
 <div id='left'>
-<br>Profile</br>
-
-<?php
+<br><u><strong>Search Friends</u></strong></br>
+ <?php
 	$user=$_SESSION['username'];
 	$query="SELECT * FROM registration WHERE uname='$user'";
 	$result=mysqli_query($connection,$query);
@@ -49,48 +48,25 @@ session_start();?>
 	}else{echo"Not found";}
 	?>
 </div>	
-
 <div id='right'>
-<h3>My Blog Posts:</h3>
-<?php
-$user=$_SESSION['username'];
-	$query = "SELECT post_id,uname,title,body FROM blog WHERE uname='$user'";
-	
-	$result=mysqli_query($connection,$query);
-	if($result){
-		if(mysqli_num_rows($result)>=1){
-				while($row = mysqli_fetch_array($result)){
-				
-				extract($row);
-				$ida="$post_id";
-				echo $ida;
-			    
-				?>
-				<table border="1" style="width:50%;">
-				<tr>
-				<th rowspan="2" colspan ="2" style="width:20%;">blog</th>
-				<td><?php echo "<h4>Title: $title</h4>";?></tr>
-				<tr>
-				<td><?php echo "<h4>body: $body</h4>";?></td>
-				</tr>
-				<td><a href='profileDisplay.php' class='active'>edit</a></td>
-				<td><a href='deleteblog.php' class='active'>delete</a></td>
-				
-				</table>
-					
-			<?php
-				
-				}}
-				else{echo"Not found";}
-	}else{echo"Not found";}
-	?>
-
-
+<h2><u>Upload Photos:</u></h2>
+<form method="POST" action="photosProcess.php" enctype="multipart/form-data">
+<input name="uploadedfile" type="file" /><br />
+<input type="submit" value="Upload" /><br />
+ <?php
+	$user=$_SESSION['username'];
+	$query3="SELECT * FROM photos WHERE user_id='$user'";
+	$result3=mysqli_query($connection,$query3);
+	while($row = mysqli_fetch_array($result3)){
+	extract($row);
+	//echo "<img src='".$path."'  height='180' width='180'>" ;
+	echo "<a href='".$path."'> <img src='".$path."' height='180' width='180'> </a>";
+	}?>
 </div>
 </div>
 <div class='clear'></div>
  <div id= "footer">
-<small>Registered to: Usman Muhammad 2831996 / Ammar Tariq 2824199</small></div>
+<small><center>Registered to: Usman Muhammad 2831996 / Ammar Tariq 2824199</center></small></div>
 </div>
 </body>
 </html>

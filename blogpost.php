@@ -6,10 +6,11 @@ $body=$_POST['body'];
 $user=$_SESSION['username'];
 echo"$title $body $user ";
 
-$sql2="INSERT INTO blog(post_id,uname,title,body,posted) Values (default,'$user','$title','$body','".time()."')";
+$sql2="INSERT INTO blog(post_id,uname,title,body,posted) Values (default,'$user','$title','$body',NOW())";
 $result2=mysqli_query($connection,$sql2);
 if($result2){
-echo "sucessfull";}
+echo "sucessfull";
+header( 'Location:ProfileDisplay.php' ) ;}
 else{
 echo"unsuccefull";
 }
