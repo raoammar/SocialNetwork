@@ -13,10 +13,10 @@
 <ul> <center>
  <?php
 
- $title=$_POST['fname'];
- $body=$_POST['lname'];
+ $title=mysql_escape_string($_POST['fname']);
+ $body=mysql_escape_string($_POST['lname']);
 
-$sql2="UPDATE blog SET title='&title',body='$body' WHERE id='$id'";
+$sql2="UPDATE blog SET title='$title',body='$body' WHERE id='$id'";
 $result2=mysqli_query($connection,$sql2);
 if($result2){
 echo "All information Successfully Updated";}
