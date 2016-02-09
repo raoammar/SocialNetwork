@@ -60,7 +60,7 @@ session_start();?>
 <input type="submit" value="search" />
 </form>
  <?php
-	@$search=$_POST['search'];
+	$search=mysql_escape_string($_POST['search']);
 	$query2="SELECT * FROM registration WHERE concat(fname,' ',lname)LIKE '%$search%'";
 	$result2=mysqli_query($connection,$query2);
 	if($result2)
